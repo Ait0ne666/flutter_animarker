@@ -363,12 +363,9 @@ class AnimarkerState extends State<Animarker> with TickerProviderStateMixin {
   void didUpdateWidget(Animarker oldWidget) {
      _markers.clear();
     if (!setEquals(oldWidget.markers, widget.markers)) {
-if (widget.markers.length < oldWidget.markers.length) {
+      if (widget.markers.isEmpty) {
         widget.updateMarkers(oldWidget.markers, widget.markers);
         return;
-      }
-      if (widget.markers.length > oldWidget.markers.length) {
-        _markers.clear();
       }
 
       //Manage new markers updates after setState had gotten called
@@ -465,6 +462,13 @@ if (widget.markers.length < oldWidget.markers.length) {
         circle.copyWith(radiusParam: circle.radius / _zoomScale);
 
     await widget.updateCircles(tempCircles, _circles.set);
+  }
+  
+  
+    void forceMarkersUpdate() async {
+    
+    _markers.clear();
+
   }
 
   @override
