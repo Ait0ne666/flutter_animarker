@@ -361,7 +361,7 @@ class AnimarkerState extends State<Animarker> with TickerProviderStateMixin {
 
   @override
   void didUpdateWidget(Animarker oldWidget) {
-     _markers.clear();
+ 
     if (!setEquals(oldWidget.markers, widget.markers)) {
       if (widget.markers.isEmpty) {
         widget.updateMarkers(oldWidget.markers, widget.markers);
